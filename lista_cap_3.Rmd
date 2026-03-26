@@ -1,0 +1,66 @@
+---
+title: "Tarefa - capitulo 3"
+author: "Felipe José Miguel Garcia"
+date: "2026-03-25"
+output: pdf_document
+---
+
+## Texto com formatação
+
+Parágrafo teste com **texto em negrito** e *texto em itálico* usando a formatação em RMd
+
+## Lista numerada
+
+1.  Topico 1
+2.  Topico 2
+3.  Topico 3
+
+## Acesso ao GitHub
+
+<https://github.com/FelipeJMGarcia/exercicio-stat-basica>
+
+## Cálculo da média
+
+```{r}
+vetor <- c(5, 7, 10, 3, 8)
+mean(vetor)
+```
+
+# Segunda parte - dados PIB cidades
+
+## Carreagando as libraries usadas
+
+```{r setup, echo=FALSE}
+library(dplyr)
+library(ggplot2)
+library(knitr)
+```
+
+## Abrindo o banco de dados do PIB das cidades brasileiras
+
+```{r}
+pib <- readRDS("pib_cid.RDS")
+
+```
+
+### Primeira dez linhas do banco
+
+```{r}
+
+kable(head(pib, 10))
+
+```
+
+### Grafico PIB per capita
+
+```{r}
+ggplot(pib, aes(x = pib_per_capita)) +
+  geom_histogram(bins = 30)
+```
+
+```{r}
+
+media_pib <- mean(pib$pib_per_capita, na.rm = TRUE)
+media_pib
+
+```
